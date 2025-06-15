@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Edit Profil{% endblock %}
+{% block content %}
+
+<h3 class="mb-3">✏️ Edit Profil</h3>
+
+<form method="POST" enctype="multipart/form-data">
+  <div class="mb-3">
+    <label for="username" class="form-label">Nama Pengguna</label>
+    <input type="text" class="form-control" id="username" name="username" value="{{ user['username'] }}" required>
+  </div>
+  
+  <div class="mb-3">
+    <label for="deskripsi" class="form-label">Deskripsi</label>
+    <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3">{{ user['deskripsi'] }}</textarea>
+  </div>
+
+  <div class="mb-3">
+    <label for="foto" class="form-label">Foto Profil (opsional)</label><br>
+    {% if user['foto'] %}
+      <img src="{{ url_for('static', filename='profile/' + user['foto']) }}" alt="Foto Profil" class="img-thumbnail mb-2" width="120">
+    {% endif %}
+    <input class="form-control" type="file" id="foto" name="foto">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+</form>
+
+{% endblock %}

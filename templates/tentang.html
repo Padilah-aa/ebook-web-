@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Tentang Kami{% endblock %}
+{% block content %}
+
+<div class="text-center">
+  <img src="{{ url_for('static', filename='profile/' + foto_kreator) }}" class="rounded-circle mb-3" width="100" height="100" style="object-fit: cover;">
+  <h4>{{ nama_kreator }}</h4>
+  <p class="text-muted">Pembuat Website eBook</p>
+</div>
+
+<div class="card mt-4">
+  <div class="card-body">
+    <p>
+  Website ini dirancang sebagai platform untuk mendokumentasikan, membagikan, dan mempublikasikan karya tulis secara digital. Melalui platform ini, saya dapat menyimpan karya-karya pribadi seperti buku, cerpen, dan puisi, sekaligus membuka ruang bagi siapa pun yang ingin membagikan karya tulis mereka.
+</p>
+<p>
+  Inisiatif ini bertujuan untuk membangun ekosistem literasi digital yang terbuka, di mana setiap tulisan memiliki nilai, dapat diakses publik, dan berkontribusi terhadap pertumbuhan intelektual bersama. Saya meyakini bahwa tulisan memiliki kekuatan untuk menginspirasi, menyampaikan ide, serta menciptakan dampak positif.
+</p>
+<p class="mb-0">
+  Terima kasih atas kunjungan Anda. Semoga platform ini dapat menjadi tempat yang bermanfaat bagi para penulis dan pembaca di mana pun berada.
+</p>
+  </div>
+</div>
+
+{% endblock %}

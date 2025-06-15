@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h2>{{ buku[3] }}</h2> <!-- Judul buku -->
+  <p><strong>Penulis:</strong> {{ buku[2] }}</p>
+
+  <div class="embed-responsive" style="height: 80vh;">
+    <iframe class="embed-responsive-item" 
+            src="{{ url_for('static', filename='books/' + buku[6]) }}" 
+            style="width: 100%; height: 100%;" 
+            frameborder="0" 
+            allowfullscreen>
+    </iframe>
+  </div>
+</div>
+{% endblock %}

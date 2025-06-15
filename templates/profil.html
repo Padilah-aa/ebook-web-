@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Profil Saya{% endblock %}
+{% block content %}
+
+<div class="text-center mb-4">
+  <img src="{{ url_for('static', filename='profile/' + user['foto']) }}" class="rounded-circle" width="100" height="100" style="object-fit: cover;">
+  <h5 class="mt-2">{{ user['username'] }}</h5>
+  <p class="text-muted">{{ user['email'] }}</p>
+  <span class="badge bg-secondary">{{ user['role']|capitalize }}</span>
+  <p class="mt-2">{{ user['deskripsi'] }}</p>
+  <a href="{{ url_for('edit_profil') }}" class="btn btn-sm btn-outline-primary">✏️ Edit Profil</a>
+</div>
+
+<h6 class="mb-3">📚 Buku Saya</h6>
+<div class="row">
+  {% for b in buku_list %}
+  <div class="col-6">
+    <div class="book-card">
+      <a href="{{ url_for('detail_buku', id=b['id']) }}">
+        <img src="{{ url_for('static', filename='covers/' + b['cover']) }}" alt="{{ b['judul'] }}">
+        <div class="mt-2">
+          <strong>{{ b['judul'] }}</strong>
+        </div>
+      </a>
+    </div>
+  </div>
+  {% else %}
+  <p class="text-muted">Kamu belum mengunggah buku apapun.</p>
+  {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Daftar Penulis{% endblock %}
+{% block content %}
+
+<h4 class="mb-3">✍️ Penulis Terdaftar</h4>
+
+<div class="d-flex overflow-auto gap-3 pb-3">
+  {% for p in penulis_list %}
+  <div class="card text-center" style="min-width: 150px;">
+    <a href="{{ url_for('detail_penulis', id=p['id']) }}" class="text-decoration-none text-dark">
+      <img src="{{ url_for('static', filename='profile/' + p['foto']) }}" class="card-img-top rounded-circle mx-auto mt-3" style="width: 80px; height: 80px; object-fit: cover;" alt="{{ p['username'] }}">
+      <div class="card-body">
+        <h6 class="card-title mb-1">{{ p['username'] }}</h6>
+        <small class="text-muted">{{ p['deskripsi'][:50] }}{% if p['deskripsi']|length > 50 %}...{% endif %}</small>
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

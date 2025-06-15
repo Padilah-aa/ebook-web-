@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Detail Buku{% endblock %}
+{% block content %}
+<div class="card mb-4">
+  <img src="{{ url_for('static', filename='covers/' + buku['cover']) }}" class="card-img-top" alt="{{ buku['judul'] }}">
+  <div class="card-body">
+    <h4 class="card-title">{{ buku['judul'] }}</h4>
+    <p class="text-muted">Penulis: 
+      <a href="{{ url_for('detail_penulis', id=buku['penulis_id']) }}">
+        {{ buku['penulis'] }}
+      </a>
+    </p>
+    <p class="card-text">{{ buku['sinopsis'] }}</p>
+    <div class="d-grid gap-2">
+      <a href="{{ url_for('static', filename='books/' + buku['file']) }}" target="_blank" class="btn btn-success">📖 Baca</a>
+      <a href="{{ url_for('static', filename='books/' + buku['file']) }}" download class="btn btn-outline-secondary">⬇️ Download PDF</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

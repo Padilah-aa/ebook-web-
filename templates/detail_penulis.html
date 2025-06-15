@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Detail Penulis{% endblock %}
+{% block content %}
+
+<div class="text-center mb-4">
+  <img src="{{ url_for('static', filename='profile/' + penulis['foto']) }}" class="rounded-circle" width="100" height="100" style="object-fit: cover;">
+  <h5 class="mt-2">{{ penulis['username'] }}</h5>
+  <p class="text-muted">{{ penulis['deskripsi'] }}</p>
+</div>
+
+<h6 class="mb-3">📚 Buku oleh {{ penulis['username'] }}</h6>
+<div class="row">
+  {% for b in buku_list %}
+  <div class="col-6">
+    <div class="book-card">
+      <a href="{{ url_for('detail_buku', id=b['id']) }}">
+        <img src="{{ url_for('static', filename='covers/' + b['cover']) }}" alt="{{ b['judul'] }}">
+        <div class="mt-2">
+          <strong>{{ b['judul'] }}</strong>
+        </div>
+      </a>
+    </div>
+  </div>
+  {% else %}
+  <p class="text-muted">Belum ada buku yang diunggah.</p>
+  {% endfor %}
+</div>
+
+{% endblock %}

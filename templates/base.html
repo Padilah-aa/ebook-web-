@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}eBook{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header py-3 px-3 mb-3">
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo me-2">
+        <h4 class="mb-0">eBook</h4>
+      </div>
+    </div>
+  </header>
+
+  <!-- Flash messages -->
+  <div class="container" style="padding-bottom: 100px;">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for msg in messages %}
+          <div class="alert alert-info">{{ msg }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+  </div>
+
+  <!-- Navbar Bawah -->
+  <nav class="bottom-navbar">
+  <a href="{{ url_for('index') }}">
+    <i class="bi bi-house-door"></i><br>Home
+  </a>
+  <a href="{{ url_for('daftar_penulis') }}">
+    <i class="bi bi-people"></i><br>Penulis
+  </a>
+  <a href="{{ url_for('tentang') }}">
+    <i class="bi bi-info-circle"></i><br>Tentang
+  </a>
+  {% if session.get('user_id') %}
+    <a href="{{ url_for('upload') }}">
+      <i class="bi bi-upload"></i><br>Upload
+    </a>
+    <a href="{{ url_for('profil') }}">
+      <i class="bi bi-person-circle"></i><br>Profil
+    </a>
+  {% else %}
+    <a href="{{ url_for('login') }}">
+      <i class="bi bi-box-arrow-in-right"></i><br>Login
+    </a>
+  {% endif %}
+</nav>
+
+</body>
+</html>

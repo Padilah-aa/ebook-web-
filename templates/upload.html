@@ -1,0 +1,32 @@
+<!-- templates/upload.html -->
+{% extends 'base.html' %}
+
+{% block title %}Upload Buku{% endblock %}
+
+{% block content %}
+<h4 class="mb-3">📤 Upload Buku Baru</h4>
+
+<form action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+  <div class="mb-3">
+    <label class="form-label">Judul Buku:</label>
+    <input type="text" name="judul" class="form-control" placeholder="Masukan Judul Buku..." required>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Sinopsis:</label>
+    <textarea name="sinopsis" class="form-control" rows="4" placeholder="Silahkan Isi Kolom Sinopsis Ini..." required></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Cover Buku (JPG/PNG)</label>
+    <input type="file" name="cover" accept="image/*" class="form-control" required>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">File Buku (PDF/docx)</label>
+    <input type="file" name="file" accept="application/pdf" class="form-control" required>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Upload</button>
+</form>
+{% endblock %}
